@@ -40,7 +40,7 @@ class Interface:
             super().__init__(0, 17, 16)
     class Sensor:
         def measure():
-            dht22 = kernel.DHT22(kernel.Pin(13))
+            dht22 = kernel.DHT22(kernel.Pin(12))
             dht22.measure()
             return dht22.temperature(), dht22.humidity()
     class Software:

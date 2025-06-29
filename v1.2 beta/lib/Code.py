@@ -7,9 +7,9 @@ from lcd import *
 clock = Interface.Clock()
 mes = Interface.Sensor.measure
 
-update_setting_metadata = False   
+update_setting_metadata = True   
 update_apps_metadata = False 
-DEBUG = False     
+DEBUG = False       
 
 backlight = Pin(20, Pin.OUT)
 backlight.low()
@@ -56,7 +56,7 @@ def dht_messure(settings):
             lcd_show(1, 0, "Error in")
             lcd_show(2, 0, "Loading Temp")
         else:
-            return e
+            raise e
 
 
 def show_clock():
@@ -228,7 +228,7 @@ main()"""
 def OS():
     if update_setting_metadata or not exists("settings.json"):
         with open("settings.json", "w") as file:
-            ujson.dump({"Time": {"Watchface": ["7 Seg.", "Character", "7 Seg.", "7 Seg.(with secs)"], "Set Clock":None , "Farenhite Temp": False, "Show Date": True, "Persian Calender": True, "Show Temp & Hum": True, "Set Time": "(SetTimeSetting)"}, "Battery Saving": {"B.S. Mode": ["Off", "Off", "Ultra B.S.", "Auto B.S."]}}, file)
+            ujson.dump({"Time": {"Watchface": ["7 Seg.", "Character", "7 Seg.", "7 Seg.(with secs)"], "Set Time": "(SetTimeSetting)", "Farenhite Temp": False, "Show Date": True, "Persian Calender": True, "Show Temp & Hum": True}, "Battery Saving": {"B.S. Mode": ["Off", "Off", "Ultra B.S.", "Auto B.S."]}}, file)
     if update_apps_metadata or not exists("apps.json"):
         with open("apps.json", "w") as file:
             ujson.dump({"Settings":[2, 6], "test":[2, 6]}, file)
