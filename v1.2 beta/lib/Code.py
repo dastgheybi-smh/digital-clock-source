@@ -7,7 +7,7 @@ from lcd import *
 clock = Interface.Clock()
 mes = Interface.Sensor.measure
 
-update_setting_metadata = True   
+update_setting_metadata = False    
 update_apps_metadata = False 
 DEBUG = False       
 
